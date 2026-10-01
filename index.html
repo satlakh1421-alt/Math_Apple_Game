@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍎 Apple Catch - Math Championship</title>
+    <!-- External Typography Stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght=500;700&display=swap"
+        rel="stylesheet">
+    <!-- Link to external styling layout -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="game-viewport">
+
+        <!-- PAGE 1: HERO START SCREEN -->
+        <div id="screen-start" class="game-page">
+            <div class="brand-badge">🏆 MATH CHAMPIONS</div>
+            <h1 class="game-logo">🍎 APPLE<br><span class="logo-sub">CATCH</span></h1>
+            <p class="game-tagline">Solve the equations, catch the correct numbers, and level up!</p>
+
+            <div class="menu-actions">
+                <button id="btn-main-play" class="ui-btn primary-btn">PLAY NOW</button>
+                <button id="btn-main-rules" class="ui-btn secondary-btn">HOW TO PLAY</button>
+                <button id="btn-main-settings" class="ui-btn secondary-btn">⚙️ SETTINGS</button>
+            </div>
+
+            <div class="audio-control-card">
+                <span>🎵 Music & Sound Effects</span>
+                <button id="btn-toggle-sound" class="sound-toggle-btn active">ON</button>
+            </div>
+        </div>
+
+        <!-- PAUSE MENU -->
+        <div id="pause-overlay" class="ui-overlay hidden">
+            <div class="modal-card">
+                <h2>PAUSED</h2>
+                <button id="btn-pause-resume" class="ui-btn primary-btn"
+                    style="width:100%; margin-bottom:10px;">RESUME</button>
+                <button id="btn-pause-home" class="ui-btn action-btn" style="width:100%;">MAIN PAGE</button>
+            </div>
+        </div>
+
+        <!-- NEW OPTIMIZED: INTERACTIVE SETTINGS POPUP OVERLAY -->
+        <div id="settings-overlay" class="ui-overlay hidden">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2>⚙️ Game Settings</h2>
+                </div>
+                <div class="modal-body"
+                    style="text-align: left; margin: 20px 0; display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="color: var(--text-dark); font-size: 1.1rem;">Background Music</strong>
+                        <input type="checkbox" id="chk-music" checked
+                            style="width: 24px; height: 24px; cursor: pointer;">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="color: var(--text-dark); font-size: 1.1rem;">Sound Effects (SFX)</strong>
+                        <input type="checkbox" id="chk-sfx" checked style="width: 24px; height: 24px; cursor: pointer;">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="color: var(--text-dark); font-size: 1.1rem;">Game Difficulty</strong>
+                        <select id="sel-difficulty"
+                            style="font-family: var(--font-body); font-size: 1rem; padding: 6px 12px; border-radius: 8px; border: 2px solid #cbd5e1;">
+                            <option value="Easy">Easy (Slower Drops)</option>
+                            <option value="Normal" selected>Normal (Standard)</option>
+                            <option value="Hard">Hard (Fast Pace)</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="btn-settings-save" class="ui-btn primary-btn" style="min-width: 100%;">SAVE & CLOSE</button>
+            </div>
+        </div>
+
+        <!-- PAGE 2: INTERACTIVE RULES POPUP -->
+        <div id="rules-overlay" class="ui-overlay hidden">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2>📋 Mission Briefing</h2>
+                </div>
+                <div class="modal-body">
+                    <p class="rules-intro">Welcome, Young Mathematician! Here is how you win:</p>
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <span class="rule-icon">🧮</span>
+                            <strong>Solve it</strong>
+                            <p>Look at the math question at the bottom of the basket.</p>
+                        </div>
+                        <div class="rule-card">
+                            <span class="rule-icon">🍎</span>
+                            <strong>Catch Answer</strong>
+                            <p>Click the falling apple that shows the correct missing answer.</p>
+                        </div>
+                        <div class="rule-card">
+                            <span class="rule-icon">❤️</span>
+                            <strong>Watch Lives</strong>
+                            <p>Wrong answers or letting correct answers hit the ground costs 1 life.</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="btn-rules-close" class="ui-btn action-btn">GOT IT, LET'S PLAY!</button>
+            </div>
+        </div>
+
+        <!-- PAGE 3: ACTIVE GAMEPLAY SCREEN -->
+        <div id="screen-gameplay" class="game-page hidden">
+            <div class="hud-bar">
+                <div class="hud-metric">
+                    <span class="metric-label">SCORE</span>
+                    <span id="txt-score" class="metric-val">000</span>
+                </div>
+                <div class="hud-metric">
+                    <span class="metric-label">STAGE</span>
+                    <span id="txt-level" class="metric-val">01/10</span>
+                </div>
+                <div class="hud-metric">
+                    <span class="metric-label">ENERGY</span>
+                    <span id="txt-lives" class="metric-val-hearts">❤️❤️❤️</span>
+                </div>
+                <div class="hud-metric highlight-metric">
+                    <span class="metric-label">TIME</span>
+                    <span id="txt-timer" class="metric-val">60s</span>
+                </div>
+                <!-- MOVED PAUSE BUTTON HERE AFTER TIMER -->
+                <button id="btn-game-pause" class="pause-btn">⏸️</button>
+            </div>
+
+            <!-- Active playground area where apples drop -->
+            <div id="active-arena"></div>
+
+            <!-- Math Question Dashboard Basket Bar Layer -->
+            <div class="dashboard-basket-bar">
+                <div class="basket-container">
+                    <span class="basket-icon">🧺</span>
+                    <span class="basket-text">SOLVE:</span>
+                    <div id="txt-question" class="question-display-box">3 + 4 = ?</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PAGE 4: POST LEVEL SCOREBOARD LAYER WITH CONDITION-DRIVEN ACTION INTERFACES -->
+        <div id="screen-scoreboard" class="game-page hidden">
+            <div class="scoreboard-card">
+                <h2 id="txt-board-title">STAGE CLEARED!</h2>
+                <p id="txt-board-desc">Excellent performance parameter metrics met.</p>
+
+                <div id="star-rank-row" class="star-rating-row">
+                    <span class="star-node missing">⭐</span>
+                    <span class="star-node missing">⭐</span>
+                    <span class="star-node missing">⭐</span>
+                </div>
+
+                <div class="final-stats-box">
+                    <div class="stat-line"><span>Total Points:</span><strong id="txt-final-score">0</strong></div>
+                    <div class="stat-line"><span>Current Stage:</span><strong id="txt-final-level">1</strong></div>
+                </div>
+
+                <!-- Split Action Controls Layout for dynamic custom actions -->
+                <div class="board-actions-layout"
+                    style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+                    <button id="btn-board-next" class="ui-btn primary-btn" style="min-width: 100%;">CONTINUE</button>
+                    <button id="btn-board-retry" class="ui-btn action-btn" style="min-width: 100%;">QUIT GAME</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Link to external runtime script engine -->
+    <script src="game.js"></script>
+</body>
+
+</html>

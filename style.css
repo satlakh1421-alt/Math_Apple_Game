@@ -1,0 +1,644 @@
+/* --- INTEGRATED COMPLETE STYLING ARCHITECTURE --- */
+:root {
+    /* Theme color variables tuned to high-quality wood/parchment layout */
+    --primary-bg: #eae0cc;
+    /* Cozy light wood backing */
+    --panel-bg: #fffdf6;
+    /* Premium soft cream parchment card */
+    --brand-color: #d63031;
+    /* Crisp classic crimson accent */
+    --accent-gold: #f1c40f;
+    /* Rich honey amber gold */
+    --text-dark: #3e2716;
+    /* Dark roast timber tone for high readability */
+    --text-muted: #8c6d53;
+    /* Warm mid-tone brown for text labels */
+
+    /* Dedicated premium wood borders and frame colors */
+    --wood-frame-dark: #422815;
+    /* Deep mahogany for bases and framing cuts */
+    --wood-frame-light: #8c531d;
+    /* Warm oak accent boundaries */
+
+    --font-display: 'Fredoka One', cursive;
+    --font-body: 'Quicksand', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: #5c3a21;
+    /* High-end carpentry workbench background aesthetic */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- COMPUTER WIDESCREEN CONTAINMENT MATRIX --- */
+#game-viewport {
+    width: 95vw;
+    max-width: 1200px;
+    height: 90vh;
+    max-height: 800px;
+    background: var(--primary-bg);
+    position: relative;
+    overflow: hidden;
+    /* Massive structural shadows mimicking a deep-set arcade/board box cabinet */
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7),
+        inset 0 0 40px rgba(0, 0, 0, 0.4);
+    border-radius: 24px;
+    border: 12px solid var(--wood-frame-dark);
+    /* Thick carved outer wood molding edge */
+}
+
+.game-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- SCREEN 1: BRAND LOGO MAIN HUB --- */
+#screen-start {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #fffdf2 0%, #eacc99 100%);
+}
+
+.brand-badge {
+    background: var(--panel-bg);
+    color: var(--wood-frame-light);
+    font-weight: 800;
+    font-size: 0.9rem;
+    padding: 8px 24px;
+    border-radius: 9999px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border: 2px dashed var(--wood-frame-light);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.game-logo {
+    font-family: var(--font-display);
+    font-size: 5.5rem;
+    color: var(--brand-color);
+    line-height: 0.95;
+    /* Layered 3D text styling matching physical wooden cutouts */
+    text-shadow: 3px 3px 0px #ffffff, 6px 6px 0px var(--wood-frame-dark);
+    margin-bottom: 20px;
+}
+
+.logo-sub {
+    color: var(--accent-gold);
+    text-shadow: 2px 2px 0px #ffffff, 5px 5px 0px var(--wood-frame-dark);
+    font-size: 4.5rem;
+}
+
+.game-tagline {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin-bottom: 40px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.menu-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    max-width: 750px;
+}
+
+/* --- STYLIZED ARCADED BUTTON DESIGN LAYOUT --- */
+.ui-btn {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    padding: 16px 36px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: auto;
+    min-width: 200px;
+}
+
+.ui-btn:active {
+    transform: translateY(6px);
+}
+
+.primary-btn {
+    background-color: #2ecc71;
+    color: white;
+    text-shadow: 0 2px 0px #27ae60;
+    box-shadow: 0 8px 0px #27ae60, 0 12px 20px rgba(46, 204, 113, 0.3);
+}
+
+.secondary-btn {
+    background-color: var(--panel-bg);
+    color: var(--text-dark);
+    border: 3px solid var(--wood-frame-light);
+    box-shadow: 0 8px 0px var(--wood-frame-light), 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-btn:active {
+    box-shadow: 0 2px 0px var(--wood-frame-light);
+}
+
+.action-btn {
+    background-color: #e67e22;
+    color: white;
+    text-shadow: 0 2px 0px #d35400;
+    box-shadow: 0 8px 0px #d35400, 0 12px 20px rgba(230, 126, 34, 0.3);
+}
+
+.action-btn:active {
+    box-shadow: 0 2px 0px #d35400;
+}
+
+.audio-control-card {
+    margin-top: 40px;
+    background: var(--panel-bg);
+    padding: 12px 24px;
+    border-radius: 16px;
+    border: 3px solid var(--wood-frame-light);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 6px 0px rgba(0, 0, 0, 0.05);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.sound-toggle-btn {
+    font-family: var(--font-display);
+    padding: 8px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #e74c3c;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 0px #c0392b;
+}
+
+.sound-toggle-btn.active {
+    background: #2ecc71;
+    box-shadow: 0 4px 0px #27ae60;
+}
+
+.sound-toggle-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px transparent;
+}
+
+/* --- SCREEN 2: INSTRUCTION MODAL INTERFACE --- */
+.ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(66, 40, 21, 0.5);
+    /* Cozy dim wood-shadow tint overlay */
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal-card {
+    background: var(--panel-bg);
+    border: 4px solid var(--wood-frame-dark);
+    border-radius: 28px;
+    padding: 36px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+}
+
+.modal-header h2 {
+    font-family: var(--font-display);
+    color: var(--text-dark);
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+}
+
+.rules-intro {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.rules-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 32px;
+    text-align: left;
+}
+
+.rule-card {
+    background: #fdfaf2;
+    border: 2px solid #ebdcb9;
+    padding: 20px;
+    border-radius: 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: inset 0 -3px 0px rgba(0, 0, 0, 0.03);
+}
+
+.rule-card strong {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+.rule-card p {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* --- SCREEN 3: RUNTIME ACTIVE PLAYGROUND VIEW --- */
+#screen-gameplay {
+    padding: 16px;
+    /* Floating panel spacing away from edge-to-edge frame gap */
+    justify-content: space-between;
+    background: var(--wood-frame-dark);
+    /* Solid master backing structure */
+}
+
+/* Updated Floating HUD Placard */
+.hud-bar {
+    height: 85px;
+    background: var(--panel-bg);
+    border: 3px solid var(--wood-frame-light);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2),
+        inset 0 -4px 0px #eddcb9;
+    margin-bottom: 14px;
+    z-index: 10;
+}
+
+.hud-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metric-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.metric-val {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    color: var(--text-dark);
+}
+
+.metric-val-hearts {
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.highlight-metric .metric-val {
+    color: #e74c3c;
+}
+
+/* --- FALLING ENTITIES ARENA (The Game Box Layer) --- */
+#active-arena {
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 3px solid #29170b;
+    /* Massive critical addition: deep inner shadows blend randomized backgrounds safely! */
+    box-shadow: inset 0 14px 28px rgba(0, 0, 0, 0.25),
+        inset 0 -14px 28px rgba(0, 0, 0, 0.25);
+    transition: background 0.6s ease;
+    /* Fluid environment transitions when levels clear! */
+}
+
+.falling-apple {
+    position: absolute;
+    top: -80px;
+    width: 76px;
+    height: 76px;
+    background: linear-gradient(135deg, #ff4d4d 0%, #cc0000 100%);
+    border-radius: 50% 50% 45% 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: inset -4px -6px 0px rgba(0, 0, 0, 0.2),
+        0 8px 12px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    animation: fallLinear linear forwards;
+}
+
+.falling-apple::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 34px;
+    width: 8px;
+    height: 10px;
+    border-left: 4px solid #5c3a21;
+    border-radius: 4px 0 0 0;
+    z-index: 1;
+}
+
+.falling-apple::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 38px;
+    width: 14px;
+    height: 8px;
+    background: #2ecc71;
+    border-radius: 0 10px 0 10px;
+    z-index: 1;
+}
+
+@keyframes fallLinear {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(850px) rotate(15deg);
+    }
+}
+
+/* --- DASHBOARD MATH BAR BASKET LAYER --- */
+.dashboard-basket-bar {
+    height: 105px;
+    background: var(--wood-frame-dark);
+    border: 3px solid var(--wood-frame-light);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3),
+        inset 0 4px 10px rgba(0, 0, 0, 0.4);
+    margin-top: 14px;
+    z-index: 10;
+}
+
+.basket-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 10px 32px;
+    border-radius: 20px;
+    width: auto;
+    min-width: 450px;
+    justify-content: center;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.basket-icon {
+    font-size: 2.3rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.basket-text {
+    font-family: var(--font-display);
+    color: #fff3e0;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.question-display-box {
+    background: var(--accent-gold);
+    color: #4a3200;
+    font-family: var(--font-display);
+    font-size: 2.3rem;
+    padding: 4px 32px;
+    border-radius: 14px;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.15);
+    letter-spacing: 1px;
+}
+
+/* --- SCREEN 4: POST GEAR TRANSITION SCOREBOARD PANEL --- */
+#screen-scoreboard {
+    justify-content: center;
+    align-items: center;
+    background: rgba(41, 23, 11, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 50;
+}
+
+.scoreboard-card {
+    background: var(--panel-bg);
+    border: 4px solid var(--wood-frame-dark);
+    border-radius: 32px;
+    padding: 40px;
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#txt-board-title {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    color: var(--text-dark);
+    text-shadow: 1px 1px 0px #fff, 3px 3px 0px #eddcb9;
+    margin-bottom: 10px;
+}
+
+#txt-board-desc {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.star-rating-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.star-node {
+    font-size: 3.6rem;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.1));
+}
+
+.star-node.missing {
+    opacity: 0.15;
+    transform: scale(0.8);
+    filter: grayscale(1);
+}
+
+.star-node.active {
+    opacity: 1;
+    transform: scale(1.25);
+    animation: starBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes starBounce {
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1.25);
+    }
+}
+
+.final-stats-box {
+    background: #fdfaf2;
+    border: 2px solid #eddcb9;
+    border-radius: 20px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.stat-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    align-items: center;
+}
+
+.stat-line strong {
+    font-family: var(--font-display);
+    color: var(--brand-color);
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+/* ==========================================================================
+   --- SPECIAL GAME PROGRESSION MECHANICS STYLING (Lacking Additions) ---
+   ========================================================================== */
+
+/* Rotten Apple Custom Theme (Stage 4+) */
+.falling-apple.rotten-apple {
+    background: linear-gradient(135deg, #a8b030 0%, #526e1c 100%) !important;
+    border-color: rgba(142, 194, 63, 0.4) !important;
+    box-shadow: inset -4px -6px 0px rgba(0, 0, 0, 0.3),
+        0 8px 12px rgba(82, 110, 28, 0.4);
+}
+
+/* Premium Golden Apple Glow Variations (Stage 8+) */
+.falling-apple.golden-apple {
+    background: linear-gradient(135deg, #ffe066 0%, #f1c40f 50%, #d4ac0d 100%) !important;
+    border-color: #ffffff !important;
+    color: #4a3200 !important;
+    font-weight: 900;
+    box-shadow: inset -4px -6px 0px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(241, 196, 15, 0.6);
+    animation: fallLinear linear forwards, goldGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes goldGlow {
+    0% {
+        filter: drop-shadow(0 0 2px #fff);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 10px #f1c40f);
+    }
+}
+
+/* Physics-based Windy Sway Mechanics (Stage 7+) */
+.falling-apple.windy-sway {
+    animation: fallLinear linear forwards, windSwayAnimationFrame 2s ease-in-out infinite alternate !important;
+}
+
+@keyframes windSwayAnimationFrame {
+    0% {
+        transform: translateX(-40px) rotate(-10deg);
+    }
+
+    100% {
+        transform: translateX(40px) rotate(25deg);
+    }
+}
+
+/* --- DEDICATED PAUSE BUTTON STYLE --- */
+.pause-btn {
+    background: #f1c40f;
+    border: 3px solid #d4ac0d;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 0px #b7950b, 0 6px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-left: 20px;
+}
+
+.pause-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px #b7950b;
+}
